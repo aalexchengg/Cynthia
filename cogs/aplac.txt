@@ -1,0 +1,107 @@
+Parallelism :similarity of structure in a pair or series of related words, phrases, or clauses
+Isocolon :a scheme of parallel structure which occurs when the parallel elements are similar not only in grammatical structure but also in length
+Antithesis :the juxtaposition of contrasting ideas, often in parallel structure
+Anastrophe :Inversion of the natural or usual word order
+Parenthesis :insertion of some verbal unit in a position that interrupts the normal syntactical flow of the sentence
+Apposition :placing side by side two coordinate elements, the second of which serves as an explanation or modification of the first
+Ellipsis :deliberate omission of a word or of words which are readily implied by the context
+Asyndeton :deliberate omission of conjunctions between a series of related clauses
+Polysyndeton :Deliberate use of many conjunctions
+Alliteration :repetition of initial or medial consonants in two or more adjacent words
+Assonance :repetition of similar vowel sounds, preceded and followed by different consonants, in the stressed syllables of adjacent words
+Anaphora :repetition of the same word or group of words at the beginning of successive clauses
+Epistrophe :repetition of the same word or groups of words at the end of successful clauses
+Epanalepsis :repetition of the initial word (or words) of a clause or sentence at the end of that same clause or sentence
+Anadiplosis :repetition of the last word of one clause at the beginning of the following clause
+Climax :arrangement of words, phrases, or clauses in an order of increasing importance
+Antimetabole :repetition of words, in successive clauses, in reverse grammatical order
+Chiasmus :reversal of grammatical structures in successive phrases or clauses
+Polypopton :repetition of words derived from the same root
+Syllogism :a logical structure that uses the major premise and minor premise to reach a necessary conclusion
+Metaphor :implied comparison between two things of unlike nature
+Conceit :a fanciful, particularly clever extended metaphor
+Simile :explicit comparison between two things of unlike nature
+malapropism :the unintentional misuse of a word by confusion with one that sounds similar
+Synecdoche :figure of speech in which a part of something represents the whole or it may use the whole to represent a part
+Metonymy :a figure of speech that replaces the name of a thing with the name of something else with which it is closely associated
+Antanaclasis :repetition of a word in two different senses
+Paronamasia :use of words alike in sound but different in meaning
+Syllepsis :use of a word understood differently in relation to two or more other words, which it modifies or governs
+Anthimeria :the substitution of one part of speech for another
+Periphrasis (autonomasia) :substituting a descriptive phrase, made up of a concrete adjective and abstract noun, for a precise word
+Personification (prosopeia) :investing abstractions or inanimate objects with human qualities
+Hyperbole :the use of exaggeration terms for the purpose of emphasis or heightened effect
+Euphemism :An indirect, less offensive way of saying something that is considered unpleasant
+Litotes :deliberate use of understatement usually made with double negatives
+Rhetorical Question :asking a question, not for the purpose of eliciting an answer but for the purpose of asserting or denying something obliquely
+Irony :use of a word in such a way to convey a meaning opposite to the literal meaning of the word
+Onomatopoeia :use of words whose sounds echoes the sense
+Oxymoron :the yoking of two terms which are ordinarily contradictory
+Paradox :an apparently contradictory statement that nevertheless contains a measure of truth
+Apostrophe :an exclamatory rhetorical figure of speech, when a speaker or writer breaks off and directs speech to any imaginary person or abstract quality or idea. In dramatic works and poetry written in or translated into English, such a figure of speech is often introduced by the exclamation "O".
+Neologism :a newly coined word or expression that the author uses for added meaning
+Aphorism :A concise statement of a truth or principle
+Clause :a group of words containing a subject and a predicate, and forming part of a compound or complex sentence
+Periodic Sentence :A sentence that places a modifying clause at the beginning and holds the main idea until the end
+Loose Sentence :A sentence that completes its main statement and then adds subordinate details
+Active Voice :the voice used to indicate that the grammatical subject of the verb is performing the action or causing the happening denoted by the verb
+Passive Voice :the voice used to indicate that the grammatical subject of the verb is the recipient (not the source) of the action denoted by the verb
+Simple Sentence :A sentence that contains one main clause
+Complex Sentence :A sentence consisting of one main clause, in which are embedded one or more subordinate clauses
+Compound Sentence :A sentence consisting of two or more main clauses
+Compound Complex Sentence :A compound sentence in which at least one of the main clauses contains one or more subordinate clause
+Declarative Sentence :A term for grammatical mood through which statements are made, in contrast with imperative, interrogative, and exclamative. Although declarative is often used interchangeably with statement, it is useful as a means of distinguishing the syntactic form of a sentence form its function; for example, the sentence "You will do as I say" is declarative in form, but functions as a command; the sentence "You're not going to tell me?" is declarative in form, but in intent and intonation is a question
+Imperative Sentence :the mood of the verb is used to express commands ('Go away'), requests ('Please sit down'), warnings ('Look out!'), offers ('Have another piece'), and entreaties ('Help me').
+Interrogative Sentence :The grammatical structure through which questions are asked
+Exclamatory Sentence :A sentence that conveys a strong emotion
+Denotation :the literal meaning of a word
+Connotation :a meaning suggested beyond the literal meaning of the word
+Juxtaposition :placement of words, sentences, characters, or ideas close together for contrasting effect
+Tone :the attitude a writer takes toward a subject as shown by word choice and sentence structure
+Circumlocution :an indirect way of expressing something
+bombast :Overly rhetorical language
+effusive :emotionally excessive; overly demonstrative
+ornate :elaborately decorated
+provincial :unsophisticated
+Didadtic :intended to teach, particularly in having moral instruction as an ulterior motive.
+pedantic :An adjective that describes words, phrases, or general tone that is overly scholarly, academic, or bookish.
+erudite :(adj.) scholarly, learned, bookish, pedantic
+droll :amusingly odd
+ludic :playful
+laudatory :expressing praise
+edifying :enlightening, informative
+cerebral :intellectual
+caustic :sarcastic in a scathing and bitter way
+satirical :mocking
+sardonic :cynical; scornfully mocking
+cynical :doubtful or distrustful of the goodness or sincerity of human motives
+haughty :arrogant
+laconic :concise, using few words
+forthright :(adj.) frank, direct, straightforward
+idiomatic :using, containing, or denoting expressions that are natural to a native speaker
+panegyric :an expression of praise
+Martyrdom :state of being a sacrifice
+urbane :refined in manner or style, suave
+invective :abusive language
+capricious :impulsive and unpredictable
+doctrinaire :rigidly devoted to theories without regard for practicality; dogmatic
+expository :explanatory
+pernicious :harmful
+sadistic :deriving pleasure from inflicting pain on others
+polemic :controversy; argument; verbal attack
+humanitarian :concerned with or seeking to promote human welfare
+subversive :intended to undermine or overthrow
+Aside :a line spoken by an actor to the audience but not intended for others on the stage
+quixotic :overly idealistic; impractical
+intransigent :refusing to compromise
+frivolous :Lacking in seriousness or importance
+lyrical :expressing a poet's inner feelings; emotional; full of images; song-like
+cogent :convincing
+jocular :characterized by joking
+anthemic :(of a song) like an anthem in being rousing or uplifting.
+contrived :artificial; labored
+metaphysical :Concerned with abstract thought, related to metaphysics (branch of philosophy concerned with explaining the nature of being and of the world); very subtle or abstruse
+epistolary :A piece of literature contained in or carried on by letters
+dissertation :formal essay
+Process Analysis :A method of paragraph or essay development by which a writer explains step by step how something is done or how to do something.
+verisimilitude :the appearance of truth

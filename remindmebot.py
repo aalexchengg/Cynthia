@@ -87,5 +87,5 @@ async def on_ready():
 
 bot.load_extension("cogs.info")
 bot.load_extension("cogs.homework")
-
+bot.load_extension("cogs.manga")
 bot.run(TOKEN)

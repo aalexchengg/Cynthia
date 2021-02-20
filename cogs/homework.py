@@ -2,13 +2,16 @@
 import sys
 import os
 import asyncio
+import aiofiles
 import aiohttp
 import discord
 import datetime
 import json
+import random
 from discord.ext import commands
 from discord.ext import menus
 import menu_testing
+import math
 from scipy.stats import norm
 from dotenv import load_dotenv
 
@@ -21,7 +24,9 @@ class Homework(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.session = aiohttp.ClientSession()
+
     
+    #basic commands
     @commands.command()
     async def add(self, ctx, *args):
         '''adds a bunch of integers together\n
@@ -34,20 +39,70 @@ class Homework(commands.Cog):
             else:
                 await ctx.send("please only send integers!")
         await ctx.send("The sum of these is " + str(sum))
+
+    @commands.command
+    async def combo(self, ctx, arg):
+        '''Provides the amount of combinations or permutations\nExample: 5c3 or 10p2'''
+        if "c" in arg:
+            data = arg.split("c")
+            if len(data)==2 and data[0].isnumeric and data[1].isnumeric:
+                answer = math.comb(data[0], data[1])
+                await ctx.send("{} = {}".format(arg, answer))
+
+        elif "p" in arg:
+            data = arg.split("p")
+            if len(data)==2 and data[0].isnumeric and data[1].isnumeric:
+                answer = math.perm(data[0], data[1])
+                await ctx.send("{} = {}".format(arg, answer))
+
+        else:
+            await ctx.send("We currently only support combinations and permutations.")
+    
+    @commands.command()
+    async def randaplac(self, ctx):
+        '''Sends a random AP Language and Composition rhetorical device.'''
+        async with aiofiles.open('cogs/aplac.txt', 'r') as aplac:
+            i = 1
+            rand = random.randrange(1, 108)
+            async for aline in aplac:
+                if i == rand:
+                    line = aline
+                i = i+1
+        embed = discord.Embed(title = "You got!", description = line)
+        await ctx.send(embed = embed)
+        
+
+
+    #scipy stats commands
     
     @commands.command()
     async def cdf(self, ctx, loc, mean=0, standard=1):
-        mean = int(mean)
-        standard = int(standard)
-        loc = int(loc)
+        '''Calculates the CDF given x value, mean, and standard deviation. 
+        If not given, the default for mean is 0 
+        and the default for standard deviation is 1'''
+        mean = float(mean)
+        standard = float(standard)
+        loc = float(loc)
         if mean !=0 and standard !=1:
             z = (loc-mean)/standard
         else: 
             z = loc
         answer = norm.cdf(z)
         await ctx.send("normalcdf({},{},{})  = {}".format(loc, mean, standard, answer))
+    
+    @commands.command()
+    async def invnorm(self, ctx, area, mean = 0, standard = 1):
+        '''Calculates the invnorm given an area <1, mean, and standard deviation.
+        If not given, the default for mean is 0
+        and he default for standard deviation is 1'''
+        answer = norm.ppf(q = float(area), loc = float(mean), scale = float(standard))
+        await ctx.send("invorm({},{},{}) = {}".format(area, mean, standard, answer))
 
-            
+
+
+
+    #Merriam Webster API commands. Dictionary coming soon?
+
     @commands.command()
     async def thesaurus(self, ctx, arg):
         '''Finds synonyms, antonyms, and related words to the word given'''
@@ -81,8 +136,8 @@ class Homework(commands.Cog):
             else:
                 liste = []
                 '''takes the merriam webster json and formats it into a list, 
-                where each item is a list where the first item is the number, 
-                 and second is a dict with key being the definition and value being a list of synonyms'''
+                where each item is a dictionary with the key being the definition
+                and the value being the synonyms that correspond to it'''
                 for i in data:
                     for j in i['def'] [0]['sseq']:
                         try:
