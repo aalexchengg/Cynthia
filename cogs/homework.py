@@ -9,6 +9,7 @@ import json
 from discord.ext import commands
 from discord.ext import menus
 import menu_testing
+from scipy.stats import norm
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -33,6 +34,18 @@ class Homework(commands.Cog):
             else:
                 await ctx.send("please only send integers!")
         await ctx.send("The sum of these is " + str(sum))
+    
+    @commands.command()
+    async def cdf(self, ctx, loc, mean=0, standard=1):
+        mean = int(mean)
+        standard = int(standard)
+        loc = int(loc)
+        if mean !=0 and standard !=1:
+            z = (loc-mean)/standard
+        else: 
+            z = loc
+        answer = norm.cdf(z)
+        await ctx.send("normalcdf({},{},{})  = {}".format(loc, mean, standard, answer))
 
             
     @commands.command()

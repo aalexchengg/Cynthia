@@ -12,12 +12,10 @@ class ThesaurusSource(menus.ListPageSource):
 
         for k,v in entries.items():
             url = "https://www.merriam-webster.com/thesaurus/" + self.word
-            current = menu.current_page + 1
             embed = discord.Embed(title = "Merriam Webster Advanced Thesaurus Search: " + self.word, url = url, description = "Definition: " + k, color = 0xa6d609 )
             embed.add_field(name = "List of synonyms", value = '\n'.join(syn for syn in v), inline = True)
             embed.set_thumbnail(url = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Merriam-Webster_logo.svg/1200px-Merriam-Webster_logo.svg.png")
-            footer = "Powered by Merriam Webster. \tPage " + str(current) + "/" + str(len(self.data))
-            print(footer)
+            footer = "Powered by Merriam Webster. \tPage " + str(menu.current_page + 1) + "/" + str(len(self.data))
             embed.set_footer(text = footer)
         return embed
     
