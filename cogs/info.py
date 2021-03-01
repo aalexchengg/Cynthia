@@ -114,11 +114,15 @@ class Information(commands.Cog):
         embed = discord.Embed(title = "Invite me", url = "http://www.tinyurl.com/3494yhdp", colour= 0xa6d609)
         embed.set_thumbnail(url = "https://i.pinimg.com/originals/a4/0f/00/a40f00befb8c2947b26146e834a8a9f8.jpg")
         await ctx.channel.send(embed = embed)
-
+    
     @commands.command()
-    async def menu_maker(self, ctx):
-        pages = menus.MenuPages(source=menu_testing.MySource(range(1, 100)), clear_reactions_after=True)
-        await pages.start(ctx)
+    async def fun_with_embeds(self, ctx):
+        embed = discord.Embed(title = "*title with asteriks*", description = "*description*")
+        embed.add_field(name = "this is the first name", value = "this is the first embed", inline = False)
+        embed.add_field(name = "this is the second name", value = " `{}` ".format("this is the second embed"), inline = False)
+        embed.add_field(name = "this is the third name", value = "<this is the third embed>", inline = True)
+        embed.add_field(name = "this is the fourth name", value = "//this is the fourth embed//", inline = True)
+        await ctx.channel.send(embed = embed)
 
 
 

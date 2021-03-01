@@ -85,4 +85,5 @@ async def on_command_error(ctx, error):
 bot.load_extension("cogs.info")
 bot.load_extension("cogs.homework")
 bot.load_extension("cogs.manga")
+bot.load_extension("cogs.fun")
 bot.run(TOKEN)
