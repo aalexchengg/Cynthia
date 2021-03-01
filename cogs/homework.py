@@ -40,19 +40,19 @@ class Homework(commands.Cog):
                 await ctx.send("please only send integers!")
         await ctx.send("The sum of these is " + str(sum))
 
-    @commands.command
+    @commands.command()
     async def combo(self, ctx, arg):
         '''Provides the amount of combinations or permutations\nExample: 5c3 or 10p2'''
         if "c" in arg:
             data = arg.split("c")
             if len(data)==2 and data[0].isnumeric and data[1].isnumeric:
-                answer = math.comb(data[0], data[1])
+                answer = math.comb(int(data[0]), int(data[1]))
                 await ctx.send("{} = {}".format(arg, answer))
 
         elif "p" in arg:
             data = arg.split("p")
             if len(data)==2 and data[0].isnumeric and data[1].isnumeric:
-                answer = math.perm(data[0], data[1])
+                answer = math.perm(int(data[0]), int(data[1]))
                 await ctx.send("{} = {}".format(arg, answer))
 
         else:

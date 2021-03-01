@@ -7,6 +7,7 @@ import menu_testing
 from dotenv import load_dotenv
 import os
 import json
+import pandas as pd
 
 class Manga(commands.Cog):
 
@@ -45,9 +46,27 @@ class Manga(commands.Cog):
 
     @commands.command()
     async def read(self, ctx, id, chapter):
+        #gets the master list of all the chapters
+        async with self.session.get("https://api.mangadex.org/v2/manga/{}/chapters".format(id)) as response:
+            source = await response.read()
+        chapters = json.loads(source)['data']['chapters']
+        df = pd.DataFrame(chapters)
+        df = df[df['language']=='gb']
+        final = df.values.tolist()
+        id = -1
+        id = next(final.index(item) for item in final if item[5]==chapter)
+        if id == -1:
+            id = 0
+            await ctx.send("Chapter is not available. Now redirecting to latest chapter.")
+        async with self.session.get("https://api.mangadex.org/v2/chapter/{}".format(final[id][0])) as response:
+            chaptersource = await response.read()
+        pages = json.loads(chaptersource)  
+        menupages = menu_testing.MangaMenu(mastersource = menu_testing.MangaReadSource(final), chapter_source = menu_testing.ChapterSource(pages), init_chapter = chapter)
+        await menupages.start(ctx)
         #first find the chapter
         #then load the images into a list
         #send to a menu and then start the menu
+
 
 
 

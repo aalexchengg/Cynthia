@@ -2,6 +2,7 @@
 import sys
 import asyncio
 import discord
+import os
 import datetime
 import menu_testing 
 from discord.ext import commands

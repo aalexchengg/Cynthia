@@ -3,6 +3,7 @@
 import os
 import discord
 import logging
+import menu_testing
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
 
@@ -13,8 +14,7 @@ intents = discord.Intents.all()
 intents.members = True
 #intents.presence = True
 
-bot = commands.Bot(command_prefix="*", help_command=None,intents = intents)
-
+bot = commands.Bot(command_prefix="*", help_command=None,intents = intents, activity=discord.Activity(type= discord.ActivityType.playing, name = "with ur mom"))
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename = 'discord.log', encoding = 'utf-8', mode = 'w')
@@ -74,10 +74,7 @@ async def on_command_error(ctx, error):
     else:
         raise error
     
-@bot.event
-async def on_ready():
-    #print("Remindme bot is connected to Discord.")
-    await bot.change_presence(activity=discord.Activity(type= discord.ActivityType.playing, name = "with ur mom"))
+    
     
 
 
