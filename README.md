@@ -1,5 +1,5 @@
 # Cynthia
-![image of Cynthia](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.reddit.com%2Fr%2Fpokemon%2Fcomments%2Ficl506%2Fcynthia_fanart%2F&psig=AOvVaw0a0WwmfwSKK_TVdYphCJ1v&ust=1614662029044000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNCXu_yqju8CFQAAAAAdAAAAABAD)
+![image of Cynthia](https://i.redd.it/bs5r0f28sxh51.jpg)
 # Introduction
 
 Cynthia is a personal Discord bot to enhance user experience and to provide some fun to my servers. 
