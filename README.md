@@ -27,9 +27,9 @@ All commands are preceded by the asterik "*".
 
 
 # Roadmap
-- Fun cog
-- cleaning up UI/UX
-- MySQL implementation
+- Debugging Manga cog
+- PostgreSQL implementation
+- Restructuring launch and config
 - Merriam Webster dictionary
 
 # Contributing
