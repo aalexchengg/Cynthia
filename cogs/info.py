@@ -11,9 +11,18 @@ from discord.ext import menus
 
 
 class Information(commands.Cog):
+    """Meta functions that give information about different configurations"""
     def __init__(self, bot):
         self.bot = bot
 
+
+
+    @commands.command()
+    async def print(self, ctx, *args):
+        response = ''
+        for arg in args:
+            response = response + " " + arg
+        await ctx.channel.send(response)
 
     @commands.command()
     #commands.has_permissions(add_reactions=True,embed_links=True)
@@ -26,12 +35,12 @@ class Information(commands.Cog):
                 cogs_desc = ''
                 for x in self.bot.cogs:
                     cogs_desc += ('{} - {}'.format(x,self.bot.cogs[x].__doc__)+'\n')
-                halp.add_field(name='Cogs',value=cogs_desc[0:len(cogs_desc)-1],inline=False)
+                halp.add_field(name='Categories',value=cogs_desc[0:len(cogs_desc)-1],inline=False)
                 cmds_desc = ''
                 for y in self.bot.walk_commands():
                     if not y.cog_name and not y.hidden:
                         cmds_desc += ('{} - {}'.format(y.name,y.help)+'\n')
-                halp.add_field(name='Uncatergorized Commands',value=cmds_desc[0:len(cmds_desc)-1],inline=False)
+                #halp.add_field(name='Uncatergorized Commands',value=cmds_desc[0:len(cmds_desc)-1],inline=False)
                 await ctx.message.add_reaction(emoji='✉')
                 await ctx.message.author.send('',embed=halp)
             else:

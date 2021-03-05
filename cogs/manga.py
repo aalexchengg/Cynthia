@@ -10,6 +10,7 @@ import json
 import pandas as pd
 
 class Manga(commands.Cog):
+    """Commands for the weeb inside of all of us"""
 
     def __init__(self, bot):
         load_dotenv()
@@ -53,11 +54,9 @@ class Manga(commands.Cog):
         df = pd.DataFrame(chapters)
         df = df[df['language']=='gb']
         final = df.values.tolist()
-        id = -1
-        id = next(final.index(item) for item in final if item[5]==chapter)
-        if id == -1:
-            id = 0
-            await ctx.send("Chapter is not available. Now redirecting to latest chapter.")
+        id = next((final.index(item) for item in final if item[5]==chapter),0)
+        if id == 0:
+            await ctx.send("Chapter is not available here! Now redirecting to latest available chapter.")
         async with self.session.get("https://api.mangadex.org/v2/chapter/{}".format(final[id][0])) as response:
             chaptersource = await response.read()
         pages = json.loads(chaptersource)  

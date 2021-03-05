@@ -21,13 +21,15 @@ handler = logging.FileHandler(filename = 'discord.log', encoding = 'utf-8', mode
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
 
+emojidict = {
+    "paimon": "<:paimon:813847764353679361>", 
+    "ruka": "<:ruka:813852212752023564>", 
+    "baka": "<:baka2:817526241665876008>",
+    "falco": '<:yaeger:817525678689353760>', 
+    'susandrew': '<:susandrew:817525680258285568>'}
 
-@bot.command()
-async def print(ctx, *args):
-    response = ''
-    for arg in args:
-        response = response + " " + arg
-    await ctx.channel.send(response)
+
+
 @bot.event
 async def on_message(message):
     if message.author.bot:
@@ -35,10 +37,16 @@ async def on_message(message):
     if message.content == 'megu':
         await message.add_reaction("👍")
         await message.channel.send(file=discord.File("gifs/megumin.gif"))
-    elif 'obama' in message.content:
+    elif 'obama' in message.content.lower():
         embed = discord.Embed(title = "You have summoned", description = "", color = 0x3b3b6d)
         embed.set_image(url="https://i.ytimg.com/vi/hPGFpaQb360/maxresdefault.jpg")
         await message.channel.send(embed = embed)
+    elif 'biden' in message.content.lower():
+        embed = discord.Embed(title = "You have summoned", description = "", color = 0x3b3b6d)
+        embed.set_image(url = "https://i.pinimg.com/280x280_RS/4f/14/d2/4f14d20f0d8b1fb78e4ff2417d5a05ee.jpg")
+        await message.channel.send(embed = embed)
+    elif message.content.lower() in emojidict:
+        await message.channel.send(emojidict[message.content.lower()])
     await bot.process_commands(message)
 
 @bot.event

@@ -20,6 +20,7 @@ THESAURUS_KEY = os.getenv('THESAURUS_KEY')
 DICTIONARY_KEY = os.getenv('DICTIONARY_KEY')
 
 class Homework(commands.Cog):
+    """Commands that come in handy when homework is due at midnight"""
 
     def __init__(self, bot):
         self.bot = bot
