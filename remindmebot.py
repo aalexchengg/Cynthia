@@ -4,17 +4,23 @@ import os
 import discord
 import logging
 import menu_testing
+import asyncpg
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
+POSTGRES = os.getenv('POSTGRES_PASSWORD')
+DATABASE = os.getenv('DATABASE_NAME')
 intents = discord.Intents.all()
 intents.members = True
 #intents.presence = True
+credentials = {'user': 'postgres', 'password': POSTGRES, 'database': DATABASE, 'host': '127.0.0.1'}
+cogs = ['info', 'homework', 'manga', 'fun']
 
 bot = commands.Bot(command_prefix="*", help_command=None,intents = intents, activity=discord.Activity(type= discord.ActivityType.playing, name = "with ur mom"))
+bot.connection = await asyncpg.connect(**credentials)
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename = 'discord.log', encoding = 'utf-8', mode = 'w')
@@ -84,14 +90,6 @@ async def on_command_error(ctx, error):
     
     
     
-
-
-
-        
-
-
-bot.load_extension("cogs.info")
-bot.load_extension("cogs.homework")
-bot.load_extension("cogs.manga")
-bot.load_extension("cogs.fun")
+for cog in cogs:
+    bot.load_extension("cogs.{}".format(cog))
 bot.run(TOKEN)

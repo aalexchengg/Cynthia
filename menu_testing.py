@@ -114,36 +114,14 @@ class MangaMenu(menus.MenuPages):
         if max_pages is None:
             return True
         return max_pages <= 2
-    '''
-    @menus.button('\N{BLACK LEFT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR}\ufe0f',
-            position=menus.First(0), skip_if=_skip_double_triangle_buttons)
-    async def go_to_previous_chapter(self, payload):
-        """go to the first page"""
+    
+    @menus.button("\U0001f1f5", position = menus.Last(2))
+    async def previous_chapter(self, payload):
         await self.change_checked_source(self.mastersource.get_current_index()+1)
-
-    @menus.button('\N{BLACK LEFT-POINTING TRIANGLE}\ufe0f', position=menus.First(1))
-    async def go_to_previous_page(self, payload):
-        """go to the previous page"""
-        await self.show_checked_page(self.current_page - 1)
-
-    @menus.button('\N{BLACK RIGHT-POINTING TRIANGLE}\ufe0f', position=menus.Last(0))
-    async def go_to_next_page(self, payload):
-        """go to the next page"""
-        await self.show_checked_page(self.current_page + 1)
-
-    @menus.button('\N{BLACK RIGHT-POINTING DOUBLE TRIANGLE WITH VERTICAL BAR}\ufe0f',
-            position=menus.Last(1), skip_if=_skip_double_triangle_buttons)
-    async def go_to_next_chapter(self, payload):
-        """go to the last page"""
-        # The call here is safe because it's guarded by skip_if
-        await self.mastersource.change_checked_source(self.mastersource.get_current_index()-1)
-
-    @menus.button('\N{BLACK SQUARE FOR STOP}\ufe0f', position=menus.Last(2))
-    async def stop_pages(self, payload):
-        """stops the pagination session."""
-        self.stop()
-'''
-
+    
+    @menus.button("\U0001f1f3", position = menus.Last(3))
+    async def next_chapter(self, payload):
+        await self.change_checked_source(self.mastersource.get_current_index()-1)
 
 class TemporaryMenu(menus.MenuPages):
     def __init__(self, source, **kwargs):

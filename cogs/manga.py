@@ -21,9 +21,13 @@ class Manga(commands.Cog):
     
     @commands.command()
     async def manga(self, ctx, id):
-        async with self.session.get("https://api.mangadex.org/v2/manga/{}/covers".format(id)) as response:
-            source = await response.read()
-        covers = json.loads(source)
+        try:
+            async with self.session.get("https://api.mangadex.org/v2/manga/{}/covers".format(id)) as response:
+                source = await response.read()
+            covers = json.loads(source)
+        except:
+            await ctx.send("502 Gateway Error - the API is not available at this time. Please try again later.")
+            return 
         #create a list of the covers
         cl = []
         for cover in covers['data']:
@@ -41,8 +45,19 @@ class Manga(commands.Cog):
             "Description": descrip['data']['description'].split('\r\n')[0],
             "LastChapter" : descrip['data']['lastChapter'],
             "MainCover": descrip['data']['mainCover']}
-        pages = menu_testing.TemporaryMenu(source = menu_testing.MangaSource(dd, cl), clear_reactions_after = True)
-        await pages.start(ctx)
+        #if there are no covers to show
+        if len(cl)==0:
+            description = "Author: {}\nArtist: {}\n".format(self.description['Author'], self.description['Artist'])
+            if self.description['LastChapter'] is None:
+                description = description + "Status: Ongoing"
+            else:
+                description = description + "{} Chapters".format(self.description['LastChapter'])
+            embed = discord.Embed(title = self.description['Title'], description = description, url = "https://mangadex.org/title/{}".format(self.description['id']))
+            embed.add_field(name = "Synopsis", value = self.description['Description'])
+            await ctx.send(embed=embed)
+        else:
+            pages = menu_testing.TemporaryMenu(source = menu_testing.MangaSource(dd, cl), clear_reactions_after = True)
+            await pages.start(ctx)
 
 
     @commands.command()
