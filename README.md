@@ -24,11 +24,14 @@ All commands are preceded by the asterik "*".
 ## Manga
 - *manga gives the description and covers of a manga given a Mangadex ID
 - *read allows users to read the manga given Mangadex ID and initial chapter
+## Fun
+- *muteroulette gives a Russian Roulette chance of being muted
+- *cartify puts your text into how Playboi Carti sounds on Twitter
 
 
 # Roadmap
-- Debugging Manga cog
-- PostgreSQL implementation
+- More PostgreSQL stuff
+- Dating Simulator?!?!?!??!
 - Restructuring launch and config
 - Merriam Webster dictionary
 
