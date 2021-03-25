@@ -1,6 +1,7 @@
 import discord
 import random
 import asyncio
+#import postgres
 from discord.ext import commands, tasks
 
 
@@ -10,6 +11,11 @@ class Fun(commands.Cog):
 
     def __init__(self, bot):
         self.bot = bot
+    
+    @commands.command()
+    async def profile(self, ctx):
+        await self.bot.get_cog("Postgres").create_user(ctx.author.id)
+
     
     @commands.command()
     async def muteroulette(self, ctx, member: discord.Member=None):
@@ -22,6 +28,8 @@ class Fun(commands.Cog):
             await member.edit(mute = False)
         else:
             await ctx.send("💨🔫You got away this time!")
+    
+
     
     @commands.command()
     async def date(self, ctx):
@@ -60,7 +68,7 @@ class Fun(commands.Cog):
             if threshold == checker:
                 message = message + random.choice(carti_list) + " " + (''.join(random.choice((str.upper, str.lower))(c) for c in word))
                 checker = random.randint(1,3)
-                threshold = 1
+                threshold = 0
             else:
                 message = message + " " + (''.join(random.choice((str.upper, str.lower))(c) for c in word))
                 threshold = threshold + 1

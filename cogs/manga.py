@@ -3,7 +3,7 @@ from discord.ext import commands
 from discord.ext import menus
 import aiohttp
 import asyncio
-import menu_testing
+from helpers import menu_testing
 from dotenv import load_dotenv
 import os
 import json

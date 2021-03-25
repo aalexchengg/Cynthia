@@ -1,10 +1,11 @@
 #informational commands
 import sys
 import asyncio
+import aiofiles
 import discord
 import os
 import datetime
-import menu_testing 
+from helpers import menu_testing 
 from discord.ext import commands
 from discord.ext import menus
 
@@ -132,6 +133,11 @@ class Information(commands.Cog):
         embed.add_field(name = "this is the third name", value = "<this is the third embed>", inline = True)
         embed.add_field(name = "this is the fourth name", value = "//this is the fourth embed//", inline = True)
         await ctx.channel.send(embed = embed)
+    
+    @commands.command()
+    async def feedback(self, message):
+        async with aiofiles.open('feedback.txt', 'w') as file:
+            await file.write('{}: {}'.format(message.author.id, message))
 
 
 

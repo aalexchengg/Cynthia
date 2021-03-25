@@ -3,8 +3,9 @@
 import os
 import discord
 import logging
-import menu_testing
+from helpers import menu_testing
 import asyncpg
+import asyncio
 from discord.ext import commands, tasks
 from dotenv import load_dotenv
 
@@ -17,10 +18,9 @@ intents = discord.Intents.all()
 intents.members = True
 #intents.presence = True
 credentials = {'user': 'postgres', 'password': POSTGRES, 'database': DATABASE, 'host': '127.0.0.1'}
-cogs = ['info', 'homework', 'manga', 'fun']
+cogs = ['info', 'homework', 'manga', 'fun', 'postgres']
 
 bot = commands.Bot(command_prefix="*", help_command=None,intents = intents, activity=discord.Activity(type= discord.ActivityType.playing, name = "with ur mom"))
-bot.connection = await asyncpg.connect(**credentials)
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
 handler = logging.FileHandler(filename = 'discord.log', encoding = 'utf-8', mode = 'w')
@@ -92,4 +92,6 @@ async def on_command_error(ctx, error):
     
 for cog in cogs:
     bot.load_extension("cogs.{}".format(cog))
+loop = asyncio.get_event_loop()
+bot.pool = loop.run_until_complete(asyncpg.create_pool(**credentials))
 bot.run(TOKEN)

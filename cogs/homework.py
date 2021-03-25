@@ -10,7 +10,7 @@ import json
 import random
 from discord.ext import commands
 from discord.ext import menus
-import menu_testing
+from helpers import menu_testing
 import math
 from scipy.stats import norm
 from dotenv import load_dotenv
