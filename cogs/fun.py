@@ -4,10 +4,27 @@ import asyncio
 #import postgres
 from discord.ext import commands, tasks
 
-
+roster = {
+            "astra": "<:astra:824807342754365480>",
+            "brim": "<:brim:824807345024401408>",
+            "breach": "<:breach:824807344475078738>",
+            "cypher": "<:cypher:824807344990584843>",
+            "jett": "<:jett:824807345157963807>",
+            "killjoy": "<:killjoy:824807345150230598>",
+            "omen": "<:omen:824807344835133501>",
+            "phoenix" : "<:phoenix:824807345246699552>",
+            "raze": "<:raze:824807345262821396>",
+            "reyna" : "<:reyna:824807344714154055>",
+            "sage" : "<:sage:824807344898179123>",
+            "skye": "<:skye:824807345326391366>",
+            "sova": "<:sova:824807345318002708>",
+            "viper": "<:viper:824807345069490207>",
+            "yoru" : "<:yoru:824807345250762782>"}
+lock = {}
 
 class Fun(commands.Cog):
     """Some fun commands to try out!"""
+
 
     def __init__(self, bot):
         self.bot = bot
@@ -29,7 +46,53 @@ class Fun(commands.Cog):
         else:
             await ctx.send("💨🔫You got away this time!")
     
-
+    @commands.command()
+    async def valorant(self, ctx, stack = 5):
+        if stack > 5 or stack < 1: stack = 5
+       
+        map_choice = random.choice(['Ascent', 'Bind', 'Haven', 'Icebox', 'Split'])
+        lineup = random.sample(list(roster), stack)
+        agents = ""
+        for agent in lineup:
+            agents = agents + roster[agent]
+        await ctx.send('Your Random {} Stack'.format(stack))
+        await ctx.send(agents)
+        await ctx.send("Your Randomly Chosen Map: {}".format(map_choice))
+    
+    @commands.command()
+    async def lock(self, ctx, *args):
+        try:
+            for arg in args:
+                lock[arg] = roster.pop(arg)
+                await ctx.send("Agent {} locked.".format(arg.capitalize()))
+        except:
+            await ctx.send("Could not find this agent!")
+    
+    @commands.command()
+    async def unlock(self, ctx, *args):
+        try:
+            for arg in args:
+                roster[arg] = lock.pop(arg)
+                await ctx.send("Agent {} unlocked.".format(arg.capitalize()))
+        except:
+            await ctx.send("Could not find this agent!")
+    
+    @commands.command()
+    async def unlockall(self, ctx):
+        if(len(lock)>0):
+            for item in lock:
+                roster[item] = lock.pop(item)
+            await ctx.send("All agents unlocked.")
+        else:
+            await ctx.send("No agents have been locked.")
+    
+    @commands.command()
+    async def locked(self, ctx):
+        if(len(lock)!=0):
+            embed = discord.Embed(title = "Locked Agents", description = '\n'.join(agent for agent in lock))
+            await ctx.send(embed = embed)
+        else:
+            await ctx.send("No agents locked.")
     
     @commands.command()
     async def date(self, ctx):

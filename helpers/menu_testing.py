@@ -13,7 +13,6 @@ class ThesaurusSource(menus.ListPageSource):
         super().__init__(data, per_page = 1)
 
     async def format_page(self, menu, entries):
-#still need to debug
         for k,v in entries.items():
             url = "https://www.merriam-webster.com/thesaurus/" + self.word
             embed = discord.Embed(title = "Merriam Webster Advanced Thesaurus Search: " + self.word, url = url, description = "Definition: {}".format(k), color = 0xa6d609 )
