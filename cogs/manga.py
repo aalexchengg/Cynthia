@@ -7,7 +7,7 @@ from helpers import menu_testing
 from dotenv import load_dotenv
 import os
 import json
-import pandas as pd
+from pandas import DataFrame
 
 class Manga(commands.Cog):
     """Commands for the weeb inside of all of us"""
@@ -66,7 +66,7 @@ class Manga(commands.Cog):
         async with self.session.get("https://api.mangadex.org/v2/manga/{}/chapters".format(id)) as response:
             source = await response.read()
         chapters = json.loads(source)['data']['chapters']
-        df = pd.DataFrame(chapters)
+        df = DataFrame(chapters)
         df = df[df['language']=='gb']
         final = df.values.tolist()
         id = next((final.index(item) for item in final if item[5]==chapter),0)

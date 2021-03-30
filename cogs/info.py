@@ -97,6 +97,23 @@ class Information(commands.Cog):
         await ctx.channel.send("Setting a timer up for {} seconds".format(time))
         await asyncio.sleep(time)
         await ctx.channel.send("Your alarm is up!" +ctx.message.author.mention)
+    
+    @commands.command()
+    async def poll(self, ctx, *, arg):
+        args = arg.split(',')[:6]
+        question = args.pop(0)
+        descrip = ""
+        buttonlist = []
+        buttonpool = [['A', '\U0001f1e6'], ['B', '\U0001f1e7'], ['C', '\U0001f1e8'], ['D', '\U0001f1e9'], ['E', '\U0001f1ea']]
+        for i in range(len(args)):
+            descrip = descrip + "{}. {}\n".format(buttonpool[i][0], args[i])
+            buttonlist.append(buttonpool[i][1])
+        embed = discord.Embed(title = "{}'s Poll".format(ctx.author.nick), description = question)
+        embed.add_field(name = "Options", value = descrip, inline = True)
+        message = await ctx.send(embed = embed)
+        for button in buttonlist:
+            await message.add_reaction(button)
+
 
     
     @commands.command()

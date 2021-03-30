@@ -32,6 +32,13 @@ class Fun(commands.Cog):
     @commands.command()
     async def profile(self, ctx):
         await self.bot.get_cog("Postgres").create_user(ctx.author.id)
+    
+    @commands.command()
+    async def badjoke(self, ctx, member: discord.Member=None):
+        #get the user from postgres based on their user id
+        #if they break the threshold with this bad joke, automatically call mute roulette and reset counter to 0
+        #else, add one to their badjoke counter
+        pass
 
     
     @commands.command()
@@ -129,12 +136,12 @@ class Fun(commands.Cog):
         threshold = 1
         for word in args:
             if threshold == checker:
-                message = message + random.choice(carti_list) + " " + (''.join(random.choice((str.upper, str.lower))(c) for c in word))
+                message = message + random.choice(carti_list) 
                 checker = random.randint(1,3)
                 threshold = 0
             else:
-                message = message + " " + (''.join(random.choice((str.upper, str.lower))(c) for c in word))
                 threshold = threshold + 1
+            message = message + + " " + (''.join(random.choice((str.upper, str.lower))(c) for c in word))
         await ctx.send(message)
         
 

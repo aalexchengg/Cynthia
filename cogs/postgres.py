@@ -14,7 +14,8 @@ class Postgres(commands.Cog):
     async def update_user(self, id, badjokeincrement = 0, datingprogress = None):
         async with self.bot.pool.acquire() as con:
             async with con.transaction():
-                test = await con.cursor('SELECT * FROM users WHERE id=$1',id)
+                test = await con.cursor(
+                    'SELECT * FROM users WHERE id=$1',id)
                 
 
     async def get_user_by_id(self, id):
