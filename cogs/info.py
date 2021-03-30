@@ -110,6 +110,7 @@ class Information(commands.Cog):
             buttonlist.append(buttonpool[i][1])
         embed = discord.Embed(title = "{}'s Poll".format(ctx.author.nick), description = question)
         embed.add_field(name = "Options", value = descrip, inline = True)
+        embed.set_thumbnail(url = ctx.author.avatar_url)
         message = await ctx.send(embed = embed)
         for button in buttonlist:
             await message.add_reaction(button)
@@ -152,9 +153,9 @@ class Information(commands.Cog):
         await ctx.channel.send(embed = embed)
     
     @commands.command()
-    async def feedback(self, message):
+    async def feedback(self, ctx, *, arg):
         async with aiofiles.open('feedback.txt', 'w') as file:
-            await file.write('{}: {}'.format(message.author.id, message))
+            await file.write('{}: {}'.format(ctx.author.id, arg))
 
 
 
